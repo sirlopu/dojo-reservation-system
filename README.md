@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/sirlopu/dojo-reservation-system/tree/master.svg?style=svg)](https://circleci.com/gh/sirlopu/dojo-reservation-system/tree/master)
+
 # Dojo Reservation System
 
 A reservation system where customers can log in and reserve a time to use the dojo for coding, game nights, birthday parties, etc.
