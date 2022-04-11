@@ -1,6 +1,6 @@
 # Dojo Reservation System
 
-A reservation system where customers can log in and reserve a time to use the dojo for coding, game nights, or birthday parties.
+A reservation system where customers can log in and reserve a time to use the dojo for coding, game nights, birthday parties, etc.
 Each amenity will have a certain capacity so that people can make use of the center safely during the COVID-19 pandemic. 
 
 
