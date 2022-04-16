@@ -14,7 +14,7 @@ Each amenity will have a certain capacity so that people can make use of the cen
 * Spring Security
 * Maven
 * JPA
-* H2 In-Memory Database (*TODO: H2 is being used for dev phase only*)
+* MySQL
 * Bootstrap
 
 ## Use Cases / User Stories
