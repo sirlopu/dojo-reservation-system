@@ -1,11 +1,6 @@
 package com.sirlopu.dojo_reservation_system;
 
 import com.sirlopu.dojo_reservation_system.model.AmenityType;
-import com.sirlopu.dojo_reservation_system.model.Capacity;
-import com.sirlopu.dojo_reservation_system.model.User;
-import com.sirlopu.dojo_reservation_system.repos.CapacityRepository;
-import com.sirlopu.dojo_reservation_system.repos.UserRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -35,19 +30,19 @@ public class DojoReservationSystemApplication {
     }
 
     // TEST ONLY - REMOVE FOR PROD
-    @Bean
-    public CommandLineRunner loadData(
-            UserRepository userRepository,
-            CapacityRepository capacityRepository) {
-        return (args) -> {
-            userRepository.save(
-                    new User("Tester 1", "tester1", bCryptPasswordEncoder().encode("12345")));
-            for (AmenityType amenityType : initialCapacities.keySet()) {
-                capacityRepository.save(new Capacity(amenityType, initialCapacities.get(amenityType)));
-            }
-        };
-    }
-
+//    @Bean
+//    public CommandLineRunner loadData(
+//            UserRepository userRepository,
+//            CapacityRepository capacityRepository) {
+//        return (args) -> {
+//            userRepository.save(
+//                    new User("Tester 1", "tester1", bCryptPasswordEncoder().encode("12345")));
+//            for (AmenityType amenityType : initialCapacities.keySet()) {
+//                capacityRepository.save(new Capacity(amenityType, initialCapacities.get(amenityType)));
+//            }
+//        };
+//    }
+//
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
