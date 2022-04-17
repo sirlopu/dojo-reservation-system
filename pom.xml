@@ -9,9 +9,9 @@
         <relativePath /><!-- lookup parent from repository -->
     </parent>
     <groupId>com.sirlopu</groupId>
-    <artifactId>amenity-reservation-system</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>amenity-reservation-system</name>
+    <artifactId>dojo-reservation-system</artifactId>
+    <version>0.0.1</version>
+    <name>dojo-reservation-system</name>
 
     <properties>
         <java.version>11</java.version>
@@ -97,6 +97,20 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.sirlopu.dojo_reservation_system.DojoReservationSystemApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
