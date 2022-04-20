@@ -8,13 +8,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
+import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
+
+    private final long userId = 1000L;
 
     @Mock
     UserRepository userRepository;
@@ -23,30 +25,32 @@ class UserServiceTest {
     UserService userService;
 
     @Test
-    void delete() {
-        userService.delete(1000L);
-
-        verify(userRepository, times(1)).deleteById(1000L);
-//        verify(userRepository, atLeastOnce()).deleteById(1000L);
-//        verify(userRepository, atMost(5)).deleteById(1000L);
-        verify(userRepository, never()).deleteById(5000L);
-    }
-
-    @Test
     void findAll() {
+        User user = new User();
+
+        List<User> users = new LinkedList<>();
+
+        users.add(user);
+
+        when(userRepository.findAll()).thenReturn(users);
+
+        List<User> foundUsers = userService.findAll();
+
+        verify(userRepository).findAll();
+        assertThat(foundUsers).isNotNull();
     }
 
     @Test
     void get() {
         User user = new User();
 
-        when(userRepository.findById(1000L)).thenReturn(Optional.of(user));
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
 
-        User foundUser = userService.get(1000L);
+        User foundUser = userService.get(userId);
 
         assertThat(foundUser).isNotNull();
 
-        verify(userRepository).findById(1000L);
+        verify(userRepository).findById(userId);
     }
 
     @Test
@@ -55,6 +59,7 @@ class UserServiceTest {
 
     @Test
     void update() {
+
     }
 
     @Test
@@ -63,5 +68,14 @@ class UserServiceTest {
         verify(userRepository).findUserByUsername("tester");
     }
 
+    @Test
+    void delete() {
+        userService.delete(userId);
+
+        verify(userRepository, times(1)).deleteById(userId);
+//        verify(userRepository, atLeastOnce()).deleteById(1000L);
+//        verify(userRepository, atMost(5)).deleteById(1000L);
+        verify(userRepository, never()).deleteById(5000L);
+    }
 
 }

@@ -8,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -18,6 +20,8 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class ReservationServiceTest {
 
+    private final long reservationId = 1000L;
+
     @Mock
     ReservationRepository reservationRepository;
 
@@ -26,19 +30,31 @@ class ReservationServiceTest {
 
     @Test
     void findAll() {
+        Reservation reservation = new Reservation();
+
+        List<Reservation> reservations = new LinkedList<>();
+
+        reservations.add(reservation);
+
+        when(reservationRepository.findAll()).thenReturn(reservations);
+
+        List<Reservation> foundReservations = reservationService.findAll();
+
+        verify(reservationRepository).findAll();
+        assertThat(foundReservations).isNotNull();
     }
 
     @Test
     void get() {
         Reservation reservation = new Reservation();
 
-        when(reservationRepository.findById(1000L)).thenReturn(Optional.of(reservation));
+        when(reservationRepository.findById(reservationId)).thenReturn(Optional.of(reservation));
 
-        Reservation foundReservation = reservationService.get(1000L);
+        Reservation foundReservation = reservationService.get(reservationId);
 
         assertThat(foundReservation).isNotNull();
 
-        verify(reservationRepository).findById(1000L);
+        verify(reservationRepository).findById(reservationId);
     }
 
     @Test
@@ -51,8 +67,8 @@ class ReservationServiceTest {
 
     @Test
     void delete() {
-        reservationService.delete(1000L);
+        reservationService.delete(reservationId);
 
-        verify(reservationRepository).deleteById(1000L);
+        verify(reservationRepository).deleteById(reservationId);
     }
 }
