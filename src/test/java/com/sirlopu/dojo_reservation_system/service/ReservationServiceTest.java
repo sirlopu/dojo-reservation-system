@@ -2,6 +2,7 @@ package com.sirlopu.dojo_reservation_system.service;
 
 import com.sirlopu.dojo_reservation_system.model.Reservation;
 import com.sirlopu.dojo_reservation_system.repos.ReservationRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,6 +29,7 @@ class ReservationServiceTest {
     @InjectMocks
     ReservationService reservationService;
 
+    @DisplayName("Test Find All Reservations")
     @Test
     void findAll() {
         Reservation reservation = new Reservation();
@@ -44,6 +46,7 @@ class ReservationServiceTest {
         assertThat(foundReservations).isNotNull();
     }
 
+    @DisplayName("Test Get a Reservation By ID")
     @Test
     void get() {
         Reservation reservation = new Reservation();
@@ -65,6 +68,7 @@ class ReservationServiceTest {
     void update() {
     }
 
+    @DisplayName("Test Delete a Reservation By ID")
     @Test
     void delete() {
         reservationService.delete(reservationId);

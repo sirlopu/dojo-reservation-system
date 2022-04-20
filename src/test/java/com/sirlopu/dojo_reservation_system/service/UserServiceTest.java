@@ -2,6 +2,7 @@ package com.sirlopu.dojo_reservation_system.service;
 
 import com.sirlopu.dojo_reservation_system.model.User;
 import com.sirlopu.dojo_reservation_system.repos.UserRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,6 +25,7 @@ class UserServiceTest {
     @InjectMocks
     UserService userService;
 
+    @DisplayName("Test Find All Users")
     @Test
     void findAll() {
         User user = new User();
@@ -40,6 +42,7 @@ class UserServiceTest {
         assertThat(foundUsers).isNotNull();
     }
 
+    @DisplayName("Test Get a User By ID")
     @Test
     void get() {
         User user = new User();
@@ -62,12 +65,14 @@ class UserServiceTest {
 
     }
 
+    @DisplayName("Test Get a User by Username")
     @Test
     void getUserByUsername() {
         userService.getUserByUsername("tester");
         verify(userRepository).findUserByUsername("tester");
     }
 
+    @DisplayName("Test Delete a User By ID")
     @Test
     void delete() {
         userService.delete(userId);
