@@ -12,8 +12,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.BDDMockito.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -70,4 +70,32 @@ class UserServiceTest {
         then(userRepository).should(never()).deleteById(5000L);
     }
 
+    @DisplayName("Test Throw")
+    @Test
+    void testDoThrow() {
+        doThrow(new RuntimeException("crash")).when(userRepository).delete(any());
+
+        assertThrows(RuntimeException.class, () -> userRepository.delete(any()));
+
+        verify(userRepository).delete(any());
+    }
+
+    @DisplayName("Test Throw BDD")
+    @Test
+    void testFindByIdThrow() {
+        given(userRepository.findById(userId)).willThrow(new RuntimeException("crash"));
+
+        assertThrows(RuntimeException.class, () -> userService.get(userId));
+
+        then(userRepository).should().findById(userId);
+    }
+
+    @Test
+    void testDeleteBDD() {
+        willThrow(new RuntimeException("crash")).given(userRepository).delete(any());
+
+        assertThrows(RuntimeException.class, () -> userRepository.delete(new User()));
+
+        then(userRepository).should().delete(any());
+    }
 }
