@@ -19,6 +19,8 @@
         <thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
         <junit-platform.version>5.3.1</junit-platform.version>
         <mockito.version>2.23.4</mockito.version>
+        <spring-boot.build-image.imageName>sirlopu/${project.artifactId}:${project.version}</spring-boot.build-image.imageName>
+
     </properties>
 
     <dependencies>
@@ -125,6 +127,7 @@
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -154,7 +157,11 @@
                     </archive>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.eclipse.jkube</groupId>
+                <artifactId>kubernetes-maven-plugin</artifactId>
+                <version>1.0.2</version>
+            </plugin>
         </plugins>
     </build>
 </project>

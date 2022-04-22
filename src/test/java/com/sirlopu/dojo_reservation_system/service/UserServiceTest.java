@@ -21,7 +21,7 @@ class UserServiceTest {
 
     private final long userId = 1000L;
 
-    @Mock
+    @Mock(lenient = true)
     UserRepository userRepository;
 
     @InjectMocks
