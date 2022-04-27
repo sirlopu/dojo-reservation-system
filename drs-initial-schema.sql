@@ -36,15 +36,3 @@ CREATE TABLE `capacity` (
 CREATE TABLE `primary_sequence` (
     `next_val` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-CREATE TABLE `user` (
-                        `id` int NOT NULL AUTO_INCREMENT,
-                        `date_created` datetime(6) NOT NULL,
-                        `last_updated` datetime(6) NOT NULL,
-                        `full_name` varchar(255) NOT NULL,
-                        `password_hash` varchar(255) DEFAULT NULL,
-                        `username` varchar(255) NOT NULL,
-                        PRIMARY KEY (`id`),
-                        UNIQUE KEY `UK_echwfeobrupe0065agvdr9617` (`full_name`),
-                        UNIQUE KEY `UK_sb8bbouer5wak8vyiiy4pf2bx` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
