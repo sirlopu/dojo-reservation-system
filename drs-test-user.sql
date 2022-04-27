@@ -1,0 +1,1 @@
+INSERT INTO `dojo-reservation-system`.`user` (`id`, `date_created`, `last_updated`, `full_name`, `password_hash`, `username`) VALUES ('10001', '2022-04-26 12:13:22.618966', '2022-04-26 12:13:22.618966', 'Tester 1', '$2a$10$om8V0Y79M3mxtGwMi3sADuevIbAroEvNXFk2Pz6A4ZYxaAPbcGbzW', 'tester1');
