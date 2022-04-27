@@ -20,7 +20,9 @@
         <junit-platform.version>5.3.1</junit-platform.version>
         <mockito.version>2.23.4</mockito.version>
         <spring-boot.build-image.imageName>sirlopu/${project.artifactId}:${project.version}</spring-boot.build-image.imageName>
-
+        <jkube.generator.name>${spring-boot.build-image.imageName}</jkube.generator.name>
+        <jkube.skip.tag>true</jkube.skip.tag>
+        <jkube.enricher.jkube-service.type>LoadBalancer</jkube.enricher.jkube-service.type>
     </properties>
 
     <dependencies>
